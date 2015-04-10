@@ -1,0 +1,32 @@
+# Abstract List - is used by NewsList and NewsLatest
+# configuration is overwritten via @override.configuration in the according implementations (see /Resources/Private/TypoScript/Library/NodeTypes/NewsList.ts2 for example
+prototype(Community.News:AbstractList) < prototype(TYPO3.Neos:Content){
+    newsRequest = ${request.arguments.tag}
+    newsCollection =  ${q(site).find('[instanceof Community.News:AbstractNews]').get()}
+
+    # filterByTag - this considers the GET parameter (e.g.: &tag=mysearchtag) - if there is no argument - all news are shown
+    @override.filterByTag = ${request.arguments.tag}
+    newsCollection.@process.filterByTag = ${filterByTag != null ? q(value).filter('[tags *= ' + filterByTag + ']').get() : value}
+
+    # sort by the property defined in Configuration/Settings.yaml
+    newsCollection.@process.sort = ${q(value).count() > 0 ? q(value).sort(configuration.sortProperty, 'DESC').get() : value}
+
+    # limit the results found according to the configuration in Configuration/Settings.yaml
+    newsCollection.@process.slice = ${q(value).count() > 0 ? q(value).slice(0, String.toInteger(configuration.maxNumberOfItems)).get() : value}
+
+    @cache {
+        mode = 'cached'
+        maximumLifetime = '86400'
+        entryIdentifier {
+            node = ${node}
+            editPreviewMode = ${editPreviewMode}
+            format = ${request.format}
+        }
+        entryTags {
+            # Whenever the node changes the matched condition could change
+            1 = ${'Node_' + documentNode.identifier}
+            # Whenever one of the parent nodes changes the layout could change
+            2 = ${'DescendantOf_' + documentNode.identifier}
+        }
+    }
+}

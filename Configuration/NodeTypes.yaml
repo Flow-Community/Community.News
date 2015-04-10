@@ -1,0 +1,238 @@
+# Base Node
+'Community.News:AbstractNews':
+  abstract: TRUE
+  superTypes:
+    - 'TYPO3.Neos:Document'
+  constraints:
+    nodeTypes:
+      '*': false
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'News Item'
+    icon: 'icon-edit'
+    group: 'news'
+    inspector:
+      groups:
+        general:
+          label: 'General'
+          position: 10
+        related:
+          label: 'Related'
+  properties:
+    creationDate:
+      type: date
+      defaultValue: 'now'
+      ui:
+        label: 'Creation date'
+        inspector:
+          group: 'general'
+          position: 5
+          editorOptions:
+            format: 'd-m-Y H:i'
+      validation:
+        'TYPO3.Neos/Validation/DateTimeValidator': []
+    archiveDate:
+      type: date
+      ui:
+        label: 'Archive date'
+        inspector:
+          group: 'general'
+          position: 10
+          editorOptions:
+            format: 'd-m-Y H:i'
+      validation:
+        'TYPO3.Neos/Validation/DateTimeValidator': []
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Enter title here'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: { }
+          list: { }
+          link:
+            a: true
+          alignment: { }
+    important:
+      type: boolean
+      ui:
+        label: Important
+        inspector:
+          group: general
+    teaser:
+      type: string
+      ui:
+        label: 'Teaser text'
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Enter teaser here'
+          format:
+            b: true
+            i: true
+            u: false
+            sub: false
+            sup: false
+            p: true
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: true
+          alignment: { }
+    categories:
+      type: references
+      ui:
+        label: 'Categories'
+        inspector:
+          group: 'related'
+          editorOptions:
+            nodeTypes: ['Community.News:Category']
+    author:
+      type: reference
+      ui:
+        label: 'Author'
+        inspector:
+          group: 'related'
+          editorOptions:
+            nodeTypes: ['Community.News:Author']
+
+    related:
+      type: references
+      ui:
+        label: 'Related News'
+        inspector:
+          group: 'related'
+          editorOptions:
+            nodeTypes: ['Community.News:AbstractNews']
+    tags:
+      type: string
+      ui:
+        label: 'Tags'
+        reloadIfChanged: FALSE
+        inspector:
+          group: 'related'
+
+'Community.News:News':
+  superTypes:
+   - 'Community.News:AbstractNews'
+
+# Categories - Subcategories are reflected by creating categories within categories in the tree (see constraints)
+'Community.News:Category':
+  superTypes:
+   - 'TYPO3.Neos:Document'
+  constraints:
+    nodeTypes:
+      '*': false
+      'Community.News:Category': true
+  ui:
+    label: 'Category'
+    icon: 'icon-book'
+    group: 'news'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+
+'Community.News:Author':
+  superTypes:
+   - 'TYPO3.Neos:Document'
+  constraints:
+    nodeTypes:
+      '*': false
+  ui:
+    label: 'Author'
+    icon: 'icon-user'
+    group: 'news'
+    inspector:
+      groups:
+        general:
+          label: 'General'
+          position: 15
+        related:
+          label: 'Related'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    name:
+      type: string
+      ui:
+        label: 'Author name'
+        inspector:
+          group: 'general'
+    email:
+      type: string
+      ui:
+        label: 'Author email'
+        inlineEditable: true
+        aloha:
+          placeholder: 'Author email'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: { }
+          list: { }
+          link:
+            a: true
+          alignment: { }
+        inspector:
+          group: 'general'
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Author image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'general'
+
+'Community.News:NewsList':
+  superTypes: ['TYPO3.Neos:Content']
+  ui:
+    label: 'News list'
+    icon: icon-list
+    inlineEditable: true
+    group: 'news'
+  constraints:
+    nodeTypes:
+      '*': false
+
+'Community.News:NewsLatest':
+  superTypes: ['TYPO3.Neos:Content']
+  ui:
+    label: 'News latest'
+    icon: icon-list
+    inlineEditable: true
+    group: 'news'
+  constraints:
+    nodeTypes:
+      '*': false

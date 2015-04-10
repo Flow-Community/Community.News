@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ts="http://typo3.org/ns/TYPO3/TypoScript/ViewHelpers"
+      xmlns:typo3cr="http://typo3.org/ns/TYPO3/TYPO3CR/ViewHelpers">
+
+<f:section name="newsList">
+    <!-- condition for pagination - this is not needed if changes in Configuration/Settings.yaml and this template are made
+         accordingly - this template is set for both cases -->
+    <f:if condition="{configuration.pagination}">
+        <!-- Pagination is set for this list -->
+        <f:then>
+            <typo3cr:widget.paginate nodes="{newsCollection}" as="paginatedNewsItems" widgetId="{node.name}" configuration="{configuration.pagination}">
+                <div>
+                    <f:for each="{paginatedNewsItems}" as="news">
+                        <ts:render path="itemRenderer" context="{node: news}" />
+                    </f:for>
+                </div>
+            </typo3cr:widget.paginate>
+        </f:then>    
+        <!-- Pagination is not set for this list -->
+        <f:else>
+            <f:for each="{newsCollection}" as="newsItem">
+                <ts:render path="itemRenderer" context="{node: newsItem}" />
+            </f:for>
+        </f:else>
+    </f:if>
+</f:section>
+
+</html>

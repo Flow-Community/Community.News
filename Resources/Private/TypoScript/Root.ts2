@@ -1,0 +1,7 @@
+include: Library/NodeTypes/Author.ts2
+include: Library/NodeTypes/Category.ts2
+include: Library/NodeTypes/Abstract/AbstractList.ts2
+include: Library/NodeTypes/NewsDetail.ts2
+include: Library/NodeTypes/NewsShort.ts2
+include: Library/NodeTypes/NewsList.ts2
+include: Library/NodeTypes/NewsLatest.ts2

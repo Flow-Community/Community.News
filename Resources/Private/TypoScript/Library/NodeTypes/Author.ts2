@@ -1,0 +1,30 @@
+# Create a new prototype for an alternative way to display the primary content for news
+prototype(Community.News:AuthorDetail) < prototype(TYPO3.Neos:Content){
+    // set the template path and section to use
+    templatePath = 'resource://Community.News/Private/Templates/TypoScriptObjects/AuthorDetail.html'
+    sectionName = 'authorDetail'
+
+    // Author details
+    name = ${q(node).property('name')}
+    email = ${q(node).property('email')}
+    image = ${q(node).property('image')}
+
+    nods = ${q(site).find('[instanceof Community.News:AbstractNews]').add(q(node)).related('author').get()}
+
+    main = TYPO3.Neos:ContentCollection{
+        nodePath = 'main'
+    }
+
+    // Set the prototypes for the images in the author section
+    authorImageMaxWidth = 200
+    authorImageMaxHeight = 200
+}
+
+# Use the prototype for AuthorDetail (see above) for rendering the PrimaryContent of Author Documents
+prototype(TYPO3.Neos:PrimaryContent){
+    author{
+        @position = 'before default'
+        condition = ${q(node).is('[instanceof Community.News:Author]')}
+        type = 'Community.News:AuthorDetail'
+    }
+}

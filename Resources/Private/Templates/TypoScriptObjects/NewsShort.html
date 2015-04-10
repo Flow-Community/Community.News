@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+
+<f:section name="newsShort">
+    <!-- News container for the PrimaryContent, attributes/values can be defined in /Resources/Private/TypoScript/Library/NodeTypes/News.ts2 -->
+    <div{attributes -> f:format.raw()}>
+        <!-- Creation Date -->
+        <p><f:format.date date="{creationDate}" format="d.m.Y H:i" /></p>
+
+        <!-- News Title -->
+        <h1><neos:contentElement.editable property="title" /></h1>
+
+        <!-- Teaser -->
+        <h3><neos:contentElement.editable property="teaser" /></h3>
+
+        <!-- Categories -->
+        <f:if condition="{categories}">
+            <p>Categories:
+                <f:for each="{categories}" as="category">
+                    <neos:link.node node="{category}">{category.properties.title}</neos:link.node>
+                </f:for>
+            </p>
+        </f:if>
+
+        <!-- Author -->
+        <f:if condition="{author}">
+            <p>Author: <neos:link.node node="{author}">{author.title}</neos:link.node></p>
+        </f:if>
+
+    </div>
+</f:section>
+</html>

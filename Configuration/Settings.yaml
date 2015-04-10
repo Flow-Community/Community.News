@@ -1,0 +1,24 @@
+TYPO3:
+  Neos:
+    typoScript:
+      autoInclude:
+        'Community.News': TRUE
+    nodeTypes:
+      groups:
+        news:
+          position: 280
+          label: 'Community News'
+Community:
+  News:
+    newsList:
+      maxNumberOfItems: 10000
+      pagination:
+        itemsPerPage: 2
+        maximumNumberOfLinks: 10
+      sortProperty: created
+    newsLatest:
+      maxNumberOfItems: 5
+      pagination: ~
+      sortProperty: created
+
+
