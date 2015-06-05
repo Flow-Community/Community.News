@@ -13,11 +13,11 @@ Community:
     newsList:
       maxNumberOfItems: 10000
       pagination:
-        itemsPerPage: 2
+        itemsPerPage: 5
         maximumNumberOfLinks: 10
       sortProperty: created
     newsLatest:
-      maxNumberOfItems: 5
+      maxNumberOfItems: 3
       pagination: ~
       sortProperty: created
 
