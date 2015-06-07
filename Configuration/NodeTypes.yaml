@@ -21,7 +21,7 @@
         related:
           label: 'Related'
   properties:
-    creationDate:
+    publishDate:
       type: DateTime
       defaultValue: 'now'
       ui:
