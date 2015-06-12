@@ -7,7 +7,7 @@
     <!-- News container for the PrimaryContent, attributes/values can be defined in /Resources/Private/TypoScript/Library/NodeTypes/News.ts2 -->
     <div{attributes -> f:format.raw()}>
         <!-- Creation Date -->
-        <p><f:format.date date="{creationDate}" format="d.m.Y H:i" /></p>
+        <p><f:format.date date="{publishDate}" format="d.m.Y H:i" /></p>
 
         <!-- News Title -->
         <h1><neos:contentElement.editable property="title" /></h1>

@@ -21,8 +21,8 @@
         related:
           label: 'Related'
   properties:
-    creationDate:
-      type: date
+    publishDate:
+      type: DateTime
       defaultValue: 'now'
       ui:
         label: 'Creation date'
@@ -34,7 +34,7 @@
       validation:
         'TYPO3.Neos/Validation/DateTimeValidator': []
     archiveDate:
-      type: date
+      type: DateTime
       ui:
         label: 'Archive date'
         inspector:

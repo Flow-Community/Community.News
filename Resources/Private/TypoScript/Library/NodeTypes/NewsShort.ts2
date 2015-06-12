@@ -5,7 +5,7 @@ prototype(Community.News:NewsShort) < prototype(TYPO3.Neos:Content){
     sectionName = 'newsShort'
 
     // General properties
-    creationDate = ${q(node).property('creationDate')}
+    publishDate = ${q(node).property('publishDate')}
     title = ${q(node).property('title')}
     teaser = ${q(node).property('teaser')}
 

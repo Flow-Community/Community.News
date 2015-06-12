@@ -1,0 +1,31 @@
+up:
+  comments: 'Migrate abstract news item nodes: update name for property creationDate to publishDate'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Community.News:AbstractNews'
+      transformations:
+        -
+          type: 'RenameProperty'
+          settings:
+            from: 'creationDate'
+            to: 'publishDate'
+
+down:
+  comments: 'Migrate abstract news item nodes: downgrade name for property publishDate to creationDate'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Community.News:AbstractNews'
+      transformations:
+        -
+          type: 'RenameProperty'
+          settings:
+            from: 'publishDate'
+            to: 'creationDate'
