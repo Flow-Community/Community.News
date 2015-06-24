@@ -1,7 +1,7 @@
 {
     "name": "community/news",
     "type": "typo3-flow-package",
-    "version": "dev-master",
+    "version": "v0.1-alpha1",
     "description": "Base News package for demonstration purposes and to be extended as needed",
     "require": {
         "typo3/flow": "*",
