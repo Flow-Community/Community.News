@@ -2,7 +2,7 @@
 'Community.News:AbstractNews':
   abstract: TRUE
   superTypes:
-    - 'TYPO3.Neos:Document'
+    'TYPO3.Neos:Document': TRUE
   constraints:
     nodeTypes:
       '*': false
@@ -136,12 +136,12 @@
 
 'Community.News:News':
   superTypes:
-   - 'Community.News:AbstractNews'
+   'Community.News:AbstractNews': TRUE
 
 # Categories - Subcategories are reflected by creating categories within categories in the tree (see constraints)
 'Community.News:Category':
   superTypes:
-   - 'TYPO3.Neos:Document'
+   'TYPO3.Neos:Document': TRUE
   constraints:
     nodeTypes:
       '*': false
@@ -156,7 +156,8 @@
 
 'Community.News:Author':
   superTypes:
-   - 'TYPO3.Neos:Document'
+   'TYPO3.Neos:Document': TRUE
+   'TYPO3.Neos.NodeTypes:ImageMixin': TRUE
   constraints:
     nodeTypes:
       '*': false
@@ -207,16 +208,10 @@
           alignment: { }
         inspector:
           group: 'general'
-    image:
-      type: TYPO3\Media\Domain\Model\ImageVariant
-      ui:
-        label: 'Author image'
-        reloadIfChanged: TRUE
-        inspector:
-          group: 'general'
 
 'Community.News:NewsList':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'TYPO3.Neos:Content': TRUE
   ui:
     label: 'News list'
     icon: icon-list
@@ -227,7 +222,8 @@
       '*': false
 
 'Community.News:NewsLatest':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'TYPO3.Neos:Content': TRUE
   ui:
     label: 'News latest'
     icon: icon-list
