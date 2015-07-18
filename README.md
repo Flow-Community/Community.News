@@ -22,8 +22,9 @@ Depending on the Version of Neos you are running (1.2.X) or a Dev-Version or Bet
 Neos 1.2.X
 
 "require": {
+   ...
    "community/news": "0.1-alpha1@dev"
-}
+},
 
 Neos 2.0
 
