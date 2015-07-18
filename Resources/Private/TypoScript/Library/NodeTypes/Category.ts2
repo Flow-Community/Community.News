@@ -4,7 +4,7 @@ prototype(Community.News:CategoryDetail) < prototype(TYPO3.Neos:Content){
     templatePath = 'resource://Community.News/Private/Templates/TypoScriptObjects/CategoryDetail.html'
     sectionName = 'categoryDetail'
 
-    // Author details
+    // Category details
     title = ${q(node).property('_name')}
     nods = ${q(site).find('[instanceof Community.News:AbstractNews]').add(q(node)).related('categories').get()}
     main = TYPO3.Neos:ContentCollection{

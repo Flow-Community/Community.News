@@ -15,7 +15,7 @@ prototype(Community.News:AuthorDetail) < prototype(TYPO3.Neos:Content){
         nodePath = 'main'
     }
 
-    // Set the prototypes for the images in the author section
+    // Set the properties for the image of the author
     authorImageMaxWidth = 200
     authorImageMaxHeight = 200
 }
