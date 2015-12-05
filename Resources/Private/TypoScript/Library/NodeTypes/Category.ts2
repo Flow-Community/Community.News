@@ -5,7 +5,7 @@ prototype(Community.News:CategoryDetail) < prototype(TYPO3.Neos:Content){
     sectionName = 'categoryDetail'
 
     // Category details
-    title = ${q(node).property('_name')}
+    title = ${q(node).property('title')}
     nods = ${q(site).find('[instanceof Community.News:AbstractNews]').add(q(node)).related('categories').get()}
     main = TYPO3.Neos:ContentCollection{
         nodePath = 'main'
