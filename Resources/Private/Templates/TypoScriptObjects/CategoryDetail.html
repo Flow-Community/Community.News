@@ -8,20 +8,13 @@
     <!-- News container for the PrimaryContent, attributes/values can be defined in /Resources/Private/TypoScript/Library/NodeTypes/Author.ts2 -->
     <div{attributes -> f:format.raw()}>
 
-    <!-- Category Name -->
-    <h1><neos:contentElement.editable property="title" /></h1>
+        <!-- Category Name -->
+        <h1><neos:contentElement.editable property="title" /></h1>
 
-    <!-- Main Content from content collection - created by the editor with elements needed like images, videos, etc. -->
+        <!-- Main Content from content collection - created by the editor with elements needed like images, videos, etc. -->
         <f:format.raw value="{main}" />
 
-        <!-- Category news -->
-        <f:if condition="{nods}">
-            <p>Related news:<br />
-                <f:for each="{nods}" as="relnews">
-                    <neos:link.node node="{relnews}">{relnews.properties.title}</neos:link.node><br />
-                </f:for>
-            </p>
-        </f:if>
+        <f:format.raw value="{newsByCategory}" />
     </div>
 </f:section>
 

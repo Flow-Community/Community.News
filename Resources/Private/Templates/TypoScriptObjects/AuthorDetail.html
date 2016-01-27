@@ -16,20 +16,13 @@
 
         <!-- Author Image -->
         <f:if condition="{image}">
-            <media:image class="media-object" asset="{image}" alt="{title}" title="{title}" maximumHeight="{authorImageMaxWidth}" maximumWidth="{authorImageMaxHeight}" />
+            <media:image class="media-object" asset="{image}" alt="{title}" title="{title}" maximumHeight="220" maximumWidth="220" />
         </f:if>
 
         <!-- Main Content from content collection - created by the editor with elements needed like images, videos, etc. -->
         <f:format.raw value="{main}" />
 
-        <!-- Author news -->
-        <f:if condition="{nods}">
-            <p>Related news:<br />
-                <f:for each="{nods}" as="relnews">
-                    <neos:link.node node="{relnews}">{relnews.properties.title}</neos:link.node><br />
-                </f:for>
-            </p>
-        </f:if>
+        <f:format.raw value="{newsByAuthor}" />
     </div>
 </f:section>
 

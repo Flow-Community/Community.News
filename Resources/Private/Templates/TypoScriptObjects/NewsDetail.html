@@ -19,26 +19,18 @@
         <f:format.raw value="{main}" />
 
         <!-- Categories -->
-        <f:if condition="{categories}">
-            <p>Categories:
-                <f:for each="{categories}" as="category">
-                    <neos:link.node node="{category}">{category.properties.title}</neos:link.node>
-                </f:for>
-            </p>
+        <f:if condition="{author}">
+            <p>Categories: <f:format.raw value="{categories}" /></p>
         </f:if>
 
         <!-- Author -->
         <f:if condition="{author}">
-            <p>Author: <neos:link.node node="{author}">{author.title}</neos:link.node></p>
+            <p>Author: <neos:link.node node="{author}">{author.properties.title}</neos:link.node></p>
         </f:if>
 
         <!-- related News -->
-        <f:if condition="{related}">
-            <p>Related news:
-                <f:for each="{related}" as="relnews">
-                    <neos:link.node node="{relnews}">{relnews.properties.title}</neos:link.node><br />
-                </f:for>
-            </p>
+        <f:if condition="{relatedNews}">
+            <f:format.raw value="{relatedNews}" />
         </f:if>
     </div>
 </f:section>

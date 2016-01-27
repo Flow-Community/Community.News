@@ -1,0 +1,28 @@
+prototype(Community.News:AbstractList) < prototype(Flowpack.Listable:List) {
+    prototype(Flowpack.Listable:Listable) {
+        @context.sortProperty = 'created'
+        # filterByTag - this considers the GET parameter (e.g.: &tag=mysearchtag) - if there is no argument - all news are shown
+        collection.@process.filterByTag = ${request.arguments.tag != null ? q(value).filter('[tags *= ' + request.arguments.tag + ']').get() : value}
+    }
+    @cache {
+        mode = 'cached'
+        entryTags {
+            1 = ${'NodeType_Community.News:AbstractNews'}
+        }
+    }
+}
+
+prototype(Community.News:NewsList) < prototype(Community.News:AbstractList) {
+    @context.listTitle = 'News'
+    prototype(Flowpack.Listable:Listable) {
+        @context.itemsPerPage = 5
+        @context.maximumNumberOfLinks = 10
+    }
+}
+
+prototype(Community.News:NewsLatest) < prototype(Community.News:AbstractList) {
+    @context.listTitle = 'Latest news'
+    prototype(Flowpack.Listable:Listable) {
+        @context.paginationEnabled = false
+    }
+}

@@ -8,17 +8,3 @@ TYPO3:
         news:
           position: 280
           label: 'Community News'
-Community:
-  News:
-    newsList:
-      maxNumberOfItems: 10000
-      pagination:
-        itemsPerPage: 5
-        maximumNumberOfLinks: 10
-      sortProperty: created
-    newsLatest:
-      maxNumberOfItems: 3
-      pagination: ~
-      sortProperty: created
-
-
