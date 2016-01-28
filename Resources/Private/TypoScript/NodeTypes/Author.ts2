@@ -1,17 +1,14 @@
-prototype(Community.News:AuthorDetail) < prototype(TYPO3.Neos:Content){
-    // set the template path and section to use
-    templatePath = 'resource://Community.News/Private/Templates/TypoScriptObjects/AuthorDetail.html'
+# The default TS object is created for every node type automatically be Neos,
+# so we just have to add a few things
+prototype(Community.News:Author) {
+    # set the template section to use
     sectionName = 'authorDetail'
-
-    // author details
-    name = ${q(node).property('name')}
-    email = ${q(node).property('email')}
-    image = ${q(node).property('image')}
 
     main = TYPO3.Neos:ContentCollection{
         nodePath = 'main'
     }
 
+    # Fetch and render all news articles that belong to the current author
     newsByAuthor = Community.News:AbstractList {
         @context.listTitle = 'News by this author'
         prototype(Flowpack.Listable:Listable) {
@@ -21,10 +18,11 @@ prototype(Community.News:AuthorDetail) < prototype(TYPO3.Neos:Content){
     }
 }
 
-prototype(TYPO3.Neos:PrimaryContent){
+# Attach to `PrimaryContent` to render nodes of this time automatically
+prototype(TYPO3.Neos:PrimaryContent) {
     author{
         @position = 'before default'
         condition = ${q(node).is('[instanceof Community.News:Author]')}
-        type = 'Community.News:AuthorDetail'
+        type = 'Community.News:Author'
     }
 }

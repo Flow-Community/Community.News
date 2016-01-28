@@ -1,10 +1,9 @@
-prototype(Community.News:NewsShort) < prototype(TYPO3.Neos:Content){
+prototype(Community.News:NewsShort) < prototype(TYPO3.Neos:Content) {
     // set the template path and section to use
-    templatePath = 'resource://Community.News/Private/Templates/TypoScriptObjects/NewsShort.html'
+    templatePath = 'resource://Community.News/Private/Templates/NodeTypes/NewsShort.html'
     sectionName = 'newsShort'
 
-    node = ${node}
-
+    # We have to manually set all needed node properties as Fluid template variables
     publishDate = ${q(node).property('publishDate')}
     title = ${q(node).property('title')}
     teaser = ${q(node).property('teaser')}

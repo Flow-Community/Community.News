@@ -1,5 +1,5 @@
-prototype(Community.News:CategoryShort) < prototype(TYPO3.Neos:Content){
-    templatePath = 'resource://Community.News/Private/Templates/TypoScriptObjects/CategoryShort.html'
+prototype(Community.News:CategoryShort) < prototype(TYPO3.Neos:Content) {
+    templatePath = 'resource://Community.News/Private/Templates/NodeTypes/CategoryShort.html'
     sectionName = 'categoryShort'
 
     title = ${q(node).property('title')}

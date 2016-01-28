@@ -1,10 +1,14 @@
-prototype(Community.News:CategoryDetail) < prototype(TYPO3.Neos:Content) {
-    // set the template path and section to use
-    templatePath = 'resource://Community.News/Private/Templates/TypoScriptObjects/CategoryDetail.html'
+# The default TS object is created for every node type automatically be Neos,
+# so we just have to add a few things
+prototype(Community.News:Category) {
+    # set the template section to use
     sectionName = 'categoryDetail'
 
-    title = ${q(node).property('title')}
+    main = TYPO3.Neos:ContentCollection {
+        nodePath = 'main'
+    }
 
+    # Fetch and render all news articles that belong to the current category
     newsByCategory = Community.News:AbstractList {
         @context.listTitle = 'News with this category'
         prototype(Flowpack.Listable:Listable) {
@@ -12,16 +16,13 @@ prototype(Community.News:CategoryDetail) < prototype(TYPO3.Neos:Content) {
             collection = ${q(site).find('[instanceof Community.News:AbstractNews]').filterByReference('categories', node).get()}
         }
     }
-
-    main = TYPO3.Neos:ContentCollection {
-        nodePath = 'main'
-    }
 }
 
+# Attach to `PrimaryContent` to render nodes of this time automatically
 prototype(TYPO3.Neos:PrimaryContent) {
     category{
         @position = 'before default'
         condition = ${q(node).is('[instanceof Community.News:Category]')}
-        type = 'Community.News:CategoryDetail'
+        type = 'Community.News:Category'
     }
 }

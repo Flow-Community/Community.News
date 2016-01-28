@@ -1,6 +1,6 @@
 include: NodeTypes/Author.ts2
 include: NodeTypes/Category.ts2
 include: NodeTypes/CategoryShort.ts2
-include: NodeTypes/NewsDetail.ts2
+include: NodeTypes/News.ts2
 include: NodeTypes/NewsShort.ts2
-include: NodeTypes/Lists.ts2
+include: TypoScriptObjects/Lists.ts2

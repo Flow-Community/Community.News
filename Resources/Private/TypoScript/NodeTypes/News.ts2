@@ -1,0 +1,34 @@
+# The default TS object is created for every node type automatically be Neos,
+# so we just have to add a few things
+prototype(Community.News:News) {
+    # set the template section to use
+    sectionName = 'newsDetail'
+
+    main = TYPO3.Neos:ContentCollection{
+        nodePath = 'main'
+    }
+
+    categories = TYPO3.TypoScript:Collection {
+        collection = ${q(node).property('categories')}
+        itemName = 'node'
+        itemRenderer = Community.News:CategoryShort
+    }
+
+    # Fetch and render all related news
+    relatedNews = Community.News:AbstractList {
+        @context.listTitle = 'Related news'
+        prototype(Flowpack.Listable:Listable) {
+            @context.paginationEnabled = false
+            collection = ${q(node).property('related')}
+        }
+    }
+}
+
+# Attach to `PrimaryContent` to render nodes of this time automatically
+prototype(TYPO3.Neos:PrimaryContent) {
+    news{
+        @position = 'before default'
+        condition = ${q(node).is('[instanceof Community.News:News]')}
+        type = 'Community.News:News'
+    }
+}
