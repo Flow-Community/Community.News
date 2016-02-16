@@ -31,7 +31,7 @@ Neos will automatically detect the package there and include it by default.
 ## 3. Configuration
 
 ###3.1 Settings.yaml
-This file is located in the ```Configuration``` Folder.
+This file is located in the ```Configuration``` Folder. You do not have to explicitely load this after installing the package, because "Convention over configuration" will take care of that for us. (in other words: "if we put it in the right place with the right name the system will find it automatically")
 
 ####3.1.1 The Neos configuration part
 The ```typoScript``` configuration entry makes sure, that the TypoScript2 root file - found in the directory *Resources/Private/TypoScript/Root.ts2* - gets included automatically when loading the package.
@@ -82,13 +82,15 @@ Mind the word "reference" which states that there is only one vs the entry "refe
 All files mentioned can be found in the folder *Resources/Private/TypoScript/* or according subfolders.
 We use TypoScript2 to get the news nodes (like news, categories, authors, etc.) that have been created by editors/admins in the backend and pass them to the Fluid templates (see below) for rendering. You can find details about TypoScript2 at: https://neos.readthedocs.org/en/1.2/IntegratorGuide/InsideTypoScript.html
 
-
-
+As good practice we did create two subfolders - putting all TypoScript files that help us rendering NodeTypes in to a *NodeTypes* folder, while objects that have no NodeType representation and which get rendered "on the fly" get put in a *TypoScriptObjects* directory.
+In addition we name the TypoScript (ts2) files after the NodeType name where applicable. ('Community.News:Author' becomes Author.ts2 - the full path would be: Community.News/Resources/Private/TypoScript/NodeTypes/Author.ts2)
 
 ###4.1 Root.ts2
-As mentioned above - this file is auto-loaded due to our Configuration.yaml and includes all needed TypoScript files in turn.
+As mentioned above - this file is auto-loaded due to our Settings.yaml and includes all needed TypoScript files in turn.
 
+###4.2 Author.ts2, Category.ts2
 
+to be continued ... ;)
 
 
 
