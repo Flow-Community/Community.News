@@ -12,20 +12,14 @@ Besides commenting the code at various key-lines, you can find general informati
 
 ###2.1 Installation via Packagist (nice and tidy)
 Community.News is listed on Packagist, therefore you only need to include the requirement in the *composer.json* of your Neos installation.
-If you want to use the latest stable version (for the current Neos 2.X branch), we recommend:
+If you want to use the latest stable version (for the current Neos 2.X branch), we recommend the CLI/shell command:
 ```
-"require": {
-   ... (your other requirements)
-   "community/news": "~1.0"
-},
+composer require community/news:~1.0
 ```
 
 If you want to test your Installation with the newest developments before they are released and marked as stable (and also can abide encountering a problem or two in the process) you can use:
 ```
-"require": {
-   ... (your other requirements)
-   "community/news": "dev-master"
-},
+composer require community/news:dev-master
 ```
 
 After setting the new requirement just run ``` composer update ``` in your shell/cmd as usual.
@@ -68,9 +62,9 @@ We did introduce AbstractNews to reflect on what we consider to be the essential
 ```
 Mixins allow for an easy inclusion of properties that are standardized in Neos (like adding an image to a NodeType).
 This has the advantage that you have a central point (the mixin definition) where a change gets reflected in all Nodes that use this mixin.
+(You can find the mixins in the Package *TYPO3.Neos.NodeTypes* in the file *Configuration/NodeTypes.Mixins.yaml*
 
 #### 3.2.3 References
-
 ```
  author:
     type: reference
@@ -83,6 +77,16 @@ This has the advantage that you have a central point (the mixin definition) wher
 ```
 This part of the AbstractNews NodeType defines that each news entry has a related author.
 Mind the word "reference" which states that there is only one vs the entry "references" in the categories property of this NodeType, which states that there can be multiples assigned.
+
+## 4. TypoScript
+All files mentioned can be found in the folder *Resources/Private/TypoScript/* or according subfolders.
+We use TypoScript2 to get the news nodes (like news, categories, authors, etc.) that have been created by editors/admins in the backend and pass them to the Fluid templates (see below) for rendering. You can find details about TypoScript2 at: https://neos.readthedocs.org/en/1.2/IntegratorGuide/InsideTypoScript.html
+
+
+
+
+###4.1 Root.ts2
+As mentioned above - this file is auto-loaded due to our Configuration.yaml and includes all needed TypoScript files in turn.
 
 
 
