@@ -1,4 +1,4 @@
-# The default TS object is created for every node type automatically be Neos,
+# The default TS object is created for every node type automatically by Neos,
 # so we just have to add a few things
 prototype(Community.News:Author) {
     # set the template section to use
@@ -18,7 +18,7 @@ prototype(Community.News:Author) {
     }
 }
 
-# Attach to `PrimaryContent` to render nodes of this time automatically
+# Attach to `PrimaryContent` to render nodes of this type automatically
 prototype(TYPO3.Neos:PrimaryContent) {
     author{
         @position = 'before default'
