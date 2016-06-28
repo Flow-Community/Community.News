@@ -1,7 +1,6 @@
-include: Library/NodeTypes/Author.ts2
-include: Library/NodeTypes/Category.ts2
-include: Library/NodeTypes/Abstract/AbstractList.ts2
-include: Library/NodeTypes/NewsDetail.ts2
-include: Library/NodeTypes/NewsShort.ts2
-include: Library/NodeTypes/NewsList.ts2
-include: Library/NodeTypes/NewsLatest.ts2
+include: NodeTypes/Author.ts2
+include: NodeTypes/Category.ts2
+include: NodeTypes/CategoryShort.ts2
+include: NodeTypes/News.ts2
+include: NodeTypes/NewsShort.ts2
+include: TypoScriptObjects/Lists.ts2

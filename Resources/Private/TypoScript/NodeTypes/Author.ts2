@@ -1,0 +1,28 @@
+# The default TS object is created for every node type automatically by Neos,
+# so we just have to add a few things
+prototype(Community.News:Author) {
+    # set the template section to use
+    sectionName = 'authorDetail'
+
+    main = TYPO3.Neos:ContentCollection{
+        nodePath = 'main'
+    }
+
+    # Fetch and render all news articles that belong to the current author
+    newsByAuthor = Community.News:AbstractList {
+        @context.listTitle = 'News by this author'
+        prototype(Flowpack.Listable:Listable) {
+            @context.paginationEnabled = false
+            collection = ${q(site).find('[instanceof Community.News:AbstractNews]').filterByReference('author', node).get()}
+        }
+    }
+}
+
+# Attach to `PrimaryContent` to render nodes of this type automatically
+prototype(TYPO3.Neos:PrimaryContent) {
+    author{
+        @position = 'before default'
+        condition = ${q(node).is('[instanceof Community.News:Author]')}
+        type = 'Community.News:Author'
+    }
+}

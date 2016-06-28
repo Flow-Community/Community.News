@@ -3,6 +3,7 @@
   abstract: TRUE
   superTypes:
     'TYPO3.Neos:Document': TRUE
+    'Flowpack.Listable:ListableMixin': TRUE
   constraints:
     nodeTypes:
       '*': false
@@ -155,6 +156,7 @@
       type: 'TYPO3.Neos:ContentCollection'
 
 'Community.News:Author':
+  label: "${String.stripTags(q(node).property('name'))}"
   superTypes:
    'TYPO3.Neos:Document': TRUE
    'TYPO3.Neos.NodeTypes:ImageMixin': TRUE
