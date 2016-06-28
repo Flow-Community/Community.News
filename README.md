@@ -155,8 +155,10 @@ As stated in the foreword this extension is not intended to be used out of the b
 However we invite you to also use ```Flowpack.Listable``` as a base for your own work (just require it via composer so you are sure to be able to get new updates easily), as chances are great that you'll need some sort of listings yourself.
 
 If you want to see some real world examples for Neos news implementations check out:
-http://www.billardcafe.at (News rendered as tiles with flavor images in between, also introducing events)
-(dmitri insert your sites here please :))
+
+- http://www.billardcafe.at (News rendered as tiles with flavor images in between, also introducing events)
+- [https://github.com/neos/Neos.NeosIo/](https://github.com/neos/Neos.NeosIo/search?utf8=%E2%9C%93&q=listable)
+- [https://github.com/psmb/KpfDistr](https://github.com/psmb/KpfDistr/search?utf8=%E2%9C%93&q=Listable)
 
 Got your own example and want to have it included here? Got new ideas or improvements for our source? Get in touch with us directly via Github or on Twitter!
 We are looking forward to hearing from you.
