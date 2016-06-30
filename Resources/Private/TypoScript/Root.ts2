@@ -4,3 +4,7 @@ include: NodeTypes/CategoryShort.ts2
 include: NodeTypes/News.ts2
 include: NodeTypes/NewsShort.ts2
 include: TypoScriptObjects/Lists.ts2
+
+prototype(TYPO3.Neos:ContentCollection).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
+prototype(TYPO3.Neos:Page).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
+root.@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}

@@ -6,6 +6,7 @@ prototype(Community.News:AbstractList) < prototype(Flowpack.Listable:List) {
     }
     @cache {
         mode = 'cached'
+        entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
         entryTags {
             1 = ${'NodeType_Community.News:AbstractNews'}
         }
